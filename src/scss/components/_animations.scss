@@ -1,1 +1,12 @@
 @use '../abstracts' as *;
+
+.disp canvas {
+  width: 100% !important;
+}
+
+.instagram-item canvas {
+  width: 100% !important;
+  height: 100% !important;
+  // object-fit: cover !important;
+  // aspect-ratio: initial !important;
+}
