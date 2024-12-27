@@ -5,6 +5,9 @@ function popupVimeoPlayer() {
   let vimeoPopup = document.querySelector(".vimeo-popup-wrapper");
   let noCursorZone = document.querySelector(".no-cursor");
 
+  let vimeoVideo = vimeoPopup.querySelector("iframe");
+  let vimeoSrc = vimeoVideo.src;
+
   noCursorZone.addEventListener('click', () => {
     showPopup();
   })
@@ -23,6 +26,7 @@ function popupVimeoPlayer() {
   }
   function hidePopup() {
     vimeoPopup.style.display = "none";
+    vimeoVideo.src = vimeoSrc;
   }
 
 }
