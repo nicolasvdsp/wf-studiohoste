@@ -32,8 +32,8 @@ function distordItemsOnHover() {
 
 function animateHeader() {
   const heading = document.querySelector(".heading-animation");
-  const firstWords = ["Verfijnd", "Esthetische", "Coole", "Deze", "Pure"]
-  const secondWords = ["interieur", "architectuur", "coolio's", "website", "chaos"]
+  const firstWords = ["Verfijnd", "Esthetische"]
+  const secondWords = ["interieur", "architectuur"]
 
   const headingText = heading.textContent.trim();
   const words = headingText.split(' ');
