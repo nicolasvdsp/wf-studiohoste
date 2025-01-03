@@ -1,5 +1,10 @@
 import hoverEffect from 'hover-effect'
 
+import { gsap } from 'gsap';
+import { SplitText, ScrollTrigger } from 'gsap/all';
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
+
 function distordItemOnHover(parentClass, dispSrc, isBgImage = false) {
   Array.from(document.querySelectorAll(`.${parentClass}`)).forEach((item) => {
     const imgs = isBgImage ?
@@ -7,7 +12,6 @@ function distordItemOnHover(parentClass, dispSrc, isBgImage = false) {
       Array.from(item.querySelectorAll('img'));
 
     let speed = 1.3;
-    console.log(imgs);
 
     new hoverEffect({
       parent: item,
@@ -84,9 +88,53 @@ function animateHeader() {
   }
 }
 
+function gsapAnimation(element) {
+  const duration = .7;
+  const stagger = .06;
+  const easing = "sine.out";
+  const triggerParams = (element, start, end) => {
+    return {
+      trigger: element,
+      start: `top ${start}%`,
+      end: `bottom ${end}%`,
+      toggleActions: "play none none reverse",
+    }
+  }
+
+  let reveal = new SplitText(element, {
+    type: "words, lines",
+    linesClass: "line line++",
+    lineThreshold: 0.6
+  });
+
+  gsap.from(reveal.lines, {
+    stagger: stagger,
+    duration: duration,
+    ease: easing,
+    y: -20,
+    scrollTrigger: triggerParams(element, 90, 60)
+  });
+
+  gsap.from(reveal.words, {
+    stagger: stagger,
+    duration: duration,
+    ease: easing,
+    y: 50,
+    scrollTrigger: triggerParams(element, 90, 60)
+  });
+}
+
+function allGsapAnimations() {
+  let elements = document.querySelectorAll(".revealonscroll");
+  elements.forEach(element => {
+    gsapAnimation(element);
+  });
+}
+
 function customAnimations() {
   distordItemsOnHover();
   animateHeader();
+  allGsapAnimations();
 }
 
 export default customAnimations;
