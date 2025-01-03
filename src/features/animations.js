@@ -1,7 +1,8 @@
 import hoverEffect from 'hover-effect'
 
 import { gsap } from 'gsap';
-import { SplitText, ScrollTrigger } from 'gsap/all';
+import { SplitText } from 'gsap/SplitText';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
