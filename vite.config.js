@@ -26,10 +26,7 @@ export default defineConfig({
         },
       },
       external:
-        [
-          'jquery',
-          'gsap/SplitText'
-        ],
+        ['jquery'],
     },
   },
 })
