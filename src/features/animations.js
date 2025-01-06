@@ -90,7 +90,11 @@ function animateHeader() {
 }
 
 function gsapAnimation(element) {
-  const duration = .7;
+  const delay = element.classList.contains("revealwithdelay") ? 4 : 0;
+  const isH1 = element.tagName === "H1" ? true : false;
+  const yValue = isH1 ? 80 : 60;
+  // const yValue = 80;
+  const duration = .4;
   const stagger = .06;
   const easing = "sine.out";
   const triggerParams = (element, start, end) => {
@@ -109,6 +113,7 @@ function gsapAnimation(element) {
   });
 
   gsap.from(reveal.lines, {
+    delay: delay,
     stagger: stagger,
     duration: duration,
     ease: easing,
@@ -117,11 +122,15 @@ function gsapAnimation(element) {
   });
 
   gsap.from(reveal.words, {
+    delay: delay,
     stagger: stagger,
     duration: duration,
     ease: easing,
-    y: 50,
-    scrollTrigger: triggerParams(element, 90, 60)
+    y: yValue,
+    scrollTrigger: triggerParams(element, 90, 60),
+    onComplete: !isH1 ? () => {
+      reveal.revert();
+    } : null
   });
 }
 
@@ -136,6 +145,7 @@ function customAnimations() {
   distordItemsOnHover();
   animateHeader();
   allGsapAnimations();
+  revealElementOnScroll();
 }
 
 export default customAnimations;
