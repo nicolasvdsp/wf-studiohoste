@@ -1,7 +1,7 @@
 import { DotLottiePlayer } from 'https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs';
 
 import './scss/app.scss';
-import customAnimations from './features/animations';
+import customAnimations from './features/animations/animations';
 import noCursor from './features/cursor';
 import popupVimeoPlayer from './features/vimeo';
 import navbar from './features/navbar';
