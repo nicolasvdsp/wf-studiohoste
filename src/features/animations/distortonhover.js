@@ -1,7 +1,9 @@
 import hoverEffect from 'hover-effect'
 
 function distordItemOnHover(parentClass, dispSrc, isBgImage = false) {
-  Array.from(document.querySelectorAll(`.${parentClass}`)).forEach((item) => {
+  const items = document.querySelectorAll(`.${parentClass}`);
+  if (!items) return;
+  Array.from(items).forEach((item) => {
     const imgs = isBgImage ?
       item.querySelector('img').getAttribute('src') :
       Array.from(item.querySelectorAll('img'));

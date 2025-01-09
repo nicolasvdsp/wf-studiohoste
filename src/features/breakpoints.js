@@ -1,7 +1,8 @@
-const instagramFeed = document.querySelector('.instagramfeed');
-const divs = instagramFeed.querySelectorAll(':scope > div');
-
 function hideLastDivsOfFeed(n) {
+  const instagramFeed = document.querySelector('.instagramfeed');
+  if (!instagramFeed) return;
+  const divs = instagramFeed.querySelectorAll(':scope > div');
+
   const mediaQuery = window.matchMedia('(max-width: 991px)');
 
   const toggleDisplay = (e) => {

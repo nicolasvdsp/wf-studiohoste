@@ -1,5 +1,6 @@
 function noCursor() {
   const wrappersWithoutCursor = document.querySelectorAll(".no-cursor");
+  if (!wrappersWithoutCursor) return;
 
   wrappersWithoutCursor.forEach((wrapper) => {
     wrapper.addEventListener('mouseenter', () => {

@@ -1,8 +1,8 @@
 // let Vimeo = require('vimeo').Vimeo;
 
 function popupVimeoPlayer() {
-
   let vimeoPopup = document.querySelector(".vimeo-popup-wrapper");
+  if (!vimeoPopup) return;
   let noCursorZone = document.querySelector(".no-cursor");
 
   let vimeoVideo = vimeoPopup.querySelector("iframe");

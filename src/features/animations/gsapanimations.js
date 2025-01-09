@@ -76,12 +76,12 @@ function revealTextElementsOnScoll(element) {
 
 function allGsapAnimations() {
   let textElements = document.querySelectorAll(".revealtextonscroll");
-  textElements.forEach(el => {
+  if (textElements) textElements.forEach(el => {
     revealTextElementsOnScoll(el);
   });
 
   let elements = document.querySelectorAll(".revealelementonscroll");
-  elements.forEach(el => {
+  if (elements) elements.forEach(el => {
     revealElementOnScroll(el);
   });
 }
