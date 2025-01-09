@@ -32,25 +32,32 @@ function revealElementOnScroll(element) {
 //reveals text with a stagger effect when scrolling into viewport
 function revealTextElementsOnScoll(element) {
   const delay = element.classList.contains("revealwithdelay") ? 4 : 0;
+  const isP = element.tagName === "P" ? true : false;
   const isH1 = element.tagName === "H1" ? true : false;
   const yValue = isH1 ? 80 : 60;
   // const yValue = 80;
-  const duration = .4;
-  const stagger = .06;
+  const duration = isP ? .6 : .6;
+  const stagger = isP ? .06 : .06;
   const easing = "sine.out";
 
   let reveal = new SplitText(element, {
-    type: "words, lines",
-    linesClass: "line line++",
-    lineThreshold: 0.6
+    type: isP ? "lines" : "words, lines",
+    linesClass: "line line++"
   });
 
-  gsap.from(reveal.lines, {
+  let reveal_child = new SplitText(reveal.lines,
+    {
+      type: "lines, words",
+      linesClass: "lineChild"
+    }
+  )
+
+  gsap.from(reveal_child.lines, {
     delay: delay,
     stagger: stagger,
     duration: duration,
     ease: easing,
-    y: -20,
+    y: '100%',
     scrollTrigger: triggerParams(element, 90, 60)
   });
 
