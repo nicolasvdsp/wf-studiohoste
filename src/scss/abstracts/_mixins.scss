@@ -1,0 +1,29 @@
+$tablet: 991px;
+$m-landscape: 767px;
+$m-portrait: 479px;
+
+@mixin breakpoint($point) {
+  @if $point ==tablet {
+    @media (max-width: $tablet) {
+      :root {
+        @content;
+      }
+    }
+  }
+
+  @else if $point ==m-landscape {
+    @media (max-width: $m-landscape) {
+      :root {
+        @content;
+      }
+    }
+  }
+
+  @else if $point ==m-portrait {
+    @media (max-width: $m-portrait) {
+      :root {
+        @content;
+      }
+    }
+  }
+}

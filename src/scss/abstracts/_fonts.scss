@@ -9,5 +9,31 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
 }
+
+// default 4.5
+$h1-size--tablet: 4rem;
+$h1-size--m_landscape: 3rem;
+$h1-size--m_portrait: 2.5rem;
+
+// default 3.5
+$h2-size--tablet: 3rem;
+$h2-size--m_landscape: 3rem;
+$h2-size--m_portrait: 2.5rem;
+
+// default 3
+$h3-size--tablet: 2.5rem;
+$h3-size--m_landscape: 2.5rem;
+$h3-size--m_portrait: 2rem;
+
+// default 2
+$h4-size--tablet: 2rem;
+$h4-size--m_landscape: 2rem;
+$h4-size--m_portrait: 1.5rem;
+
+// default 1.125
+$body-size--tablet: 1.125rem;
+$body-size--m_landscape: 1.125rem;
+$body-size--m_portrait: 1.125rem;

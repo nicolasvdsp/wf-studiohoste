@@ -1,1 +1,22 @@
 @use '../abstracts' as *;
+
+@include breakpoint('tablet') {
+  --typography--h1-size: #{$h1-size--tablet};
+  --typography--h2-size: #{$h2-size--tablet};
+  --typography--h3-size: #{$h3-size--tablet};
+  --typography--h4-size: #{$h4-size--tablet};
+}
+
+@include breakpoint('m-landscape') {
+  --typography--h1-size: #{$h1-size--m_landscape};
+  --typography--h2-size: #{$h2-size--m_landscape};
+  --typography--h3-size: #{$h3-size--m_landscape};
+  --typography--h4-size: #{$h4-size--m_landscape};
+}
+
+@include breakpoint('m-portrait') {
+  --typography--h1-size: #{$h1-size--m_portrait};
+  --typography--h2-size: #{$h2-size--m_portrait};
+  --typography--h3-size: #{$h3-size--m_portrait};
+  --typography--h4-size: #{$h4-size--m_portrait};
+}
