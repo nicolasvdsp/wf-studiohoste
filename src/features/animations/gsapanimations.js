@@ -8,8 +8,7 @@ const triggerParams = (element, start, end) => {
   return {
     trigger: element,
     start: `top ${start}%`,
-    end: `bottom ${end}%`,
-    toggleActions: "play none none reverse",
+    ...(end && { end: `bottom ${end}%` })
   }
 }
 
@@ -31,13 +30,12 @@ function revealElementOnScroll(element) {
 
 //reveals text with a stagger effect when scrolling into viewport
 function revealTextElementsOnScoll(element) {
-  const delay = element.classList.contains("revealwithdelay") ? 4 : 0;
+  const delay = element.classList.contains("revealWithDelay") ? 4 : null;
   const isP = element.tagName === "P" ? true : false;
   const isH1 = element.tagName === "H1" ? true : false;
-  const yValue = isH1 ? 80 : 60;
-  // const yValue = 80;
-  const duration = isP ? .6 : .6;
-  const stagger = isP ? .06 : .06;
+  const yValue = '100%';
+  const duration = 1;
+  const stagger = 0.2;
   const easing = "sine.out";
 
   let reveal = new SplitText(element, {
@@ -47,7 +45,7 @@ function revealTextElementsOnScoll(element) {
 
   let reveal_child = new SplitText(reveal.lines,
     {
-      type: "lines, words",
+      type: "lines",
       linesClass: "lineChild"
     }
   )
@@ -57,8 +55,8 @@ function revealTextElementsOnScoll(element) {
     stagger: stagger,
     duration: duration,
     ease: easing,
-    y: '100%',
-    scrollTrigger: triggerParams(element, 90, 60)
+    y: yValue,
+    scrollTrigger: !delay ? triggerParams(element, 90, 60) : null,
   });
 
   gsap.from(reveal.words, {
@@ -67,15 +65,17 @@ function revealTextElementsOnScoll(element) {
     duration: duration,
     ease: easing,
     y: yValue,
-    scrollTrigger: triggerParams(element, 90, 60),
+    scrollTrigger: !delay ? triggerParams(element, 90, 60) : null,
     onComplete: !isH1 ? () => {
-      reveal.revert();
+      setTimeout(() => {
+        reveal.revert();
+      }, 1000);
     } : null
   });
 }
 
 function allGsapAnimations() {
-  let textElements = document.querySelectorAll(".revealtextonscroll");
+  let textElements = document.querySelectorAll(".revealTextOnScroll");
   if (textElements) textElements.forEach(el => {
     revealTextElementsOnScoll(el);
   });
