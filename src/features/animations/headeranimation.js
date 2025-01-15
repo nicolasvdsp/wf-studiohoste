@@ -34,21 +34,23 @@ function animateHeader() {
     let firstIndex = 0;
     let secondIndex = 0;
 
-    firstSpan.classList.add('cycle');
     setTimeout(() => {
-      secondSpan.classList.add('cycle');
-    }, 300);
-
-    setInterval(() => {
-      firstIndex = (firstIndex + 1) % firstWords.length;
-      firstSpan.textContent = firstWords[firstIndex];
-
+      firstSpan.classList.add('cycle');
       setTimeout(() => {
-        secondIndex = (secondIndex + 1) % secondWords.length;
-        secondSpan.textContent = secondWords[secondIndex];
+        secondSpan.classList.add('cycle');
       }, 300);
 
-    }, 6000);
+      setInterval(() => {
+        firstIndex = (firstIndex + 1) % firstWords.length;
+        firstSpan.textContent = firstWords[firstIndex];
+
+        setTimeout(() => {
+          secondIndex = (secondIndex + 1) % secondWords.length;
+          secondSpan.textContent = secondWords[secondIndex];
+        }, 300);
+
+      }, 6000);
+    }, 3000);
 
   }
 }
