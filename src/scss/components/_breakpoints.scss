@@ -20,3 +20,9 @@
   --_typography---h3--size: #{$h3-size--m_portrait};
   --_typography---h4--size: #{$h4-size--m_portrait};
 }
+
+@media (max-width: 479px) {
+  .heading-animation {
+    font-size: 2.1rem;
+  }
+}
