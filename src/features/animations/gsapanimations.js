@@ -14,6 +14,7 @@ const triggerParams = (element, start, end) => {
 
 //reveals elements when scrolling into viewport
 function revealElementOnScroll(element) {
+  element.classList.remove("revealelementonscroll");
   gsap.fromTo(
     element,
     { y: 20, opacity: 0 },
@@ -30,6 +31,7 @@ function revealElementOnScroll(element) {
 
 //reveals text with a stagger effect when scrolling into viewport
 function revealTextElementsOnScoll(element) {
+  element.classList.remove("revealTextOnScroll");
   const delay = element.classList.contains("revealWithDelay") ? 4 : null;
   const isP = element.tagName === "P" ? true : false;
   const isH1 = element.tagName === "H1" ? true : false;
