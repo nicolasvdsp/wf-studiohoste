@@ -1,5 +1,7 @@
 import hoverEffect from 'hover-effect'
 
+const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+
 function distordItemOnHover(parentClass, dispSrc, isBgImage = false) {
   const items = document.querySelectorAll(`.${parentClass}`);
   if (!items) return;
@@ -10,15 +12,36 @@ function distordItemOnHover(parentClass, dispSrc, isBgImage = false) {
 
     let speed = 1.3;
 
-    new hoverEffect({
-      parent: item,
-      intensity: 0.1,
-      image1: isBgImage ? imgs : imgs[1].getAttribute('src'),
-      image2: isBgImage ? isBgImage : imgs[0].getAttribute('src'),
-      displacementImage: dispSrc,
-      speedIn: speed,
-      speedOut: speed
-    });
+    if (!isTouchDevice) {
+      new hoverEffect({
+        parent: item,
+        intensity: 0.1,
+        image1: isBgImage ? imgs : imgs[1].getAttribute('src'),
+        image2: isBgImage ? isBgImage : imgs[0].getAttribute('src'),
+        displacementImage: dispSrc,
+        speedIn: speed,
+        speedOut: speed
+      });
+    } else {
+      imgs[1].style.display = 'block';
+      let sibling = item.nextElementSibling;
+      // console.log(sibling);
+      if (sibling) {
+        sibling.classList.add('notouchDetails');
+        sibling.firstChild.classList.add('notouchDetails-title');
+        let tagcontainer = sibling.querySelectorAll('.flex-center-up')
+        tagcontainer.forEach(container => {
+          if (container) container.classList.add('notouchDetails-tagcontainer');
+        });
+
+        // if (tagcontainer) tagcontainer.classList.add('.notouchDetails-tagcontainer');
+        // if (tagcontainer) console.log(tagcontainer);
+        let tags = sibling.querySelectorAll('.tag')
+        tags.forEach(tag => {
+          tag.classList.add('notouchDetails-tag');
+        })
+      };
+    }
   })
 }
 

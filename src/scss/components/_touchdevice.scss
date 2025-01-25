@@ -1,0 +1,28 @@
+@use '../abstracts' as *;
+
+.notouchDetails {
+  position: relative;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: auto;
+}
+
+.notouchDetails-title {
+  opacity: 1 !important;
+  // margin-top: -10px;
+
+}
+
+.notouchDetails-tagcontainer {
+  align-items: flex-start;
+}
+
+.notouchDetails-tag {
+  opacity: 1 !important;
+  margin-top: -10px;
+  margin-bottom: 0px;
+}
+
+.notouchDetails-tag:last-of-type {
+  margin-bottom: .5rem;
+}
