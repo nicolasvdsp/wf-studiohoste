@@ -9,7 +9,8 @@ const triggerParams = (element, start, end) => {
   return {
     trigger: element,
     start: `top ${start}%`,
-    ...(end && { end: `bottom ${end}%` })
+    end: `bottom ${end}%`
+    // ...(end && { end: `bottom ${end}%` })
   }
 }
 
@@ -25,10 +26,10 @@ function revealElementOnScroll(element) {
       y: 0,
       opacity: 1,
       delay: 2,
-      duration: !instantReveal ? 1.8 : 1,
+      // duration: !instantReveal ? 1.8 : 1,
       ease: !instantReveal ? "custom" : "sine.out",
       // stagger: 2,
-      scrollTrigger: !instantReveal ? triggerParams(element, 90, 60) : null
+      scrollTrigger: !instantReveal ? triggerParams(element, 90, 70) : null
     }
   )
 }
@@ -36,7 +37,8 @@ function revealElementOnScroll(element) {
 //reveals text with a stagger effect when scrolling into viewport
 function revealTextElementsOnScoll(element) {
   element.classList.remove("revealTextOnScroll");
-  const delay = element.classList.contains("revealWithDelay") ? 2.2 : null;
+  const revealWithDelay = element.classList.contains("revealWithDelay") ? true : false;
+  const delay = revealWithDelay ? 1.5 : null;
   const isP = element.tagName === "P" ? true : false;
   const isH1 = element.tagName === "H1" ? true : false;
   const yValue = '100%';
@@ -62,7 +64,7 @@ function revealTextElementsOnScoll(element) {
     duration: duration,
     ease: easing,
     y: yValue,
-    scrollTrigger: !delay ? triggerParams(element, 90, 60) : null,
+    scrollTrigger: !delay ? triggerParams(element, 90, 70) : null,
   });
 
   gsap.from(reveal.words, {
@@ -71,7 +73,7 @@ function revealTextElementsOnScoll(element) {
     duration: duration,
     ease: easing,
     y: yValue,
-    scrollTrigger: !delay ? triggerParams(element, 90, 60) : null,
+    scrollTrigger: !delay ? triggerParams(element, 90, 70) : null,
     onComplete: !isH1 ? () => {
       setTimeout(() => {
         reveal.revert();
