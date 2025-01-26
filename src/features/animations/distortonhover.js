@@ -41,6 +41,10 @@ function distordItemOnHover(parentClass, dispSrc, isBgImage = false) {
           tag.classList.add('notouchDetails-tag');
         })
       };
+      if (item.classList.contains('instagram-item')) {
+        item.querySelector('.portfolio11_item_hoverinfo_container').style.display = 'none';
+        console.log('.portfolio11_item_hoverinfo_container');
+      }
     }
   })
 }
