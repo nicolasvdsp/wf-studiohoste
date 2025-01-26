@@ -14,7 +14,12 @@ function currentPage() {
   navLinks.forEach(link => {
     const href = link.getAttribute('href'); // Haal href van de link
     if (currentPath === href) {
-      link.classList.add('active'); // Voeg de 'active' klasse toe
+      if (currentPath != '/contact') {
+        link.classList.add('active'); // Voeg de 'active' klasse toe
+      } else {
+        link.classList.add('active-contact');
+        document.querySelector(".navbar .is-nav-desktop a").classList.add('active-contact');
+      }
     }
   });
 }

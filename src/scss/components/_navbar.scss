@@ -24,3 +24,7 @@
 .btn-nav.active::after {
   width: var(--after-width, 100%);
 }
+
+.active-contact {
+  box-shadow: 0px 1px 0px 1px var(--colors--black), 0px 0px 0px 1px var(--colors--black) !important;
+}
