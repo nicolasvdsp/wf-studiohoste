@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollSmoother);
 function smoothscrolling() {
 
   let smoother = ScrollSmoother.create({
-    smooth: 1.75,
+    smooth: 1.5,
 
   });
 }
