@@ -19,3 +19,8 @@
 .btn-nav:hover::after {
   width: var(--after-width, 100%);
 }
+
+// .be/contact will be ignored because of the specificity. In this case, we want this behavior.
+.btn-nav.active::after {
+  width: var(--after-width, 100%);
+}
