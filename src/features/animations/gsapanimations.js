@@ -1,8 +1,9 @@
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { CustomEase } from 'gsap/CustomEase';
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase);
 
 const triggerParams = (element, start, end) => {
   return {
@@ -14,17 +15,20 @@ const triggerParams = (element, start, end) => {
 
 //reveals elements when scrolling into viewport
 function revealElementOnScroll(element) {
-  element.classList.remove("revealelementonscroll");
+  element.classList.remove("revealElementOnScroll");
+  const instantReveal = element.classList.contains("instantReveal") ? true : false;
+  CustomEase.create("custom", "M0,0 C0.2,0 0.2,0 0.2,0 0.447,0 0.769,1 1,1 ");
   gsap.fromTo(
     element,
     { y: 20, opacity: 0 },
     {
       y: 0,
       opacity: 1,
-      duration: 1,
-      ease: "sine.out",
-      stagger: 2,
-      scrollTrigger: triggerParams(element, 90, 60)
+      delay: 2,
+      duration: !instantReveal ? 1.8 : 1,
+      ease: !instantReveal ? "custom" : "sine.out",
+      // stagger: 2,
+      scrollTrigger: !instantReveal ? triggerParams(element, 90, 60) : null
     }
   )
 }
@@ -32,7 +36,7 @@ function revealElementOnScroll(element) {
 //reveals text with a stagger effect when scrolling into viewport
 function revealTextElementsOnScoll(element) {
   element.classList.remove("revealTextOnScroll");
-  const delay = element.classList.contains("revealWithDelay") ? 4 : null;
+  const delay = element.classList.contains("revealWithDelay") ? 2.2 : null;
   const isP = element.tagName === "P" ? true : false;
   const isH1 = element.tagName === "H1" ? true : false;
   const yValue = '100%';
@@ -82,7 +86,7 @@ function allGsapAnimations() {
     revealTextElementsOnScoll(el);
   });
 
-  let elements = document.querySelectorAll(".revealelementonscroll");
+  let elements = document.querySelectorAll(".revealElementOnScroll");
   if (elements) elements.forEach(el => {
     revealElementOnScroll(el);
   });
