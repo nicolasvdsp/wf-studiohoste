@@ -18,6 +18,7 @@ const triggerParams = (element, start, end) => {
 function revealElementOnScroll(element) {
   element.classList.remove("revealElementOnScroll");
   const instantReveal = element.classList.contains("instantReveal") ? true : false;
+  if (instantReveal) console.log("now");
   CustomEase.create("custom", "M0,0 C0.2,0 0.2,0 0.2,0 0.447,0 0.769,1 1,1 ");
   gsap.fromTo(
     element,
@@ -25,7 +26,7 @@ function revealElementOnScroll(element) {
     {
       y: 0,
       opacity: 1,
-      delay: 2,
+      // delay: 2,
       // duration: !instantReveal ? 1.8 : 1,
       ease: !instantReveal ? "custom" : "sine.out",
       // stagger: 2,
@@ -38,12 +39,12 @@ function revealElementOnScroll(element) {
 function revealTextElementsOnScoll(element) {
   element.classList.remove("revealTextOnScroll");
   const revealWithDelay = element.classList.contains("revealWithDelay") ? true : false;
-  const delay = revealWithDelay ? 1.5 : null;
+  const delay = revealWithDelay ? 1.6 : null;
   const isP = element.tagName === "P" ? true : false;
   const isH1 = element.tagName === "H1" ? true : false;
   const yValue = '100%';
-  const duration = 1;
-  const stagger = 0.2;
+  const duration = .5;
+  const stagger = 0.07;
   const easing = "sine.out";
 
   let reveal = new SplitText(element, {
