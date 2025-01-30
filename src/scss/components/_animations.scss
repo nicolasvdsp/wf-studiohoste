@@ -7,6 +7,8 @@
 .instagram-item canvas {
   width: 100% !important;
   height: 100% !important;
+  position: relative;
+  z-index: 99;
   // object-fit: cover !important;
   // aspect-ratio: initial !important;
 }
