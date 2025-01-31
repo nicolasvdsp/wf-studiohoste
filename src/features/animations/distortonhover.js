@@ -7,27 +7,36 @@ function distordItemOnHover(parentClass, dispSrc) {
   if (!items) return;
   Array.from(items).forEach((item) => {
     const imgs = Array.from(item.querySelectorAll('img'));
-
     const isInstaFeed = item.classList.contains('instagram-item');
 
     let speed = 1.3;
     let baseimg = imgs[1];
-    let ratioWidth = baseimg.naturalWidth;
-    let ratioHeight = baseimg.naturalHeight;
-    console.log(ratioHeight + '' + ratioHeight);
-
-    if (!isTouchDevice) {
-      new hoverEffect({
-        parent: item,
-        intensity: 0.1,
-        image1: imgs[1].getAttribute('src'),
-        image2: imgs[0].getAttribute('src'),
-        displacementImage: dispSrc,
-        speedIn: speed,
-        speedOut: speed,
-        imagesRatio: isInstaFeed ? ratioHeight / ratioWidth : 1
-      });
+    if (baseimg.complete) {
+      handleImageLoad();
     } else {
+      baseimg.addEventListener("load", handleImageLoad);
+    }
+
+    function handleImageLoad() {
+      let ratioWidth = baseimg.naturalWidth;
+      let ratioHeight = baseimg.naturalHeight;
+      if (!isTouchDevice) {
+        new hoverEffect({
+          parent: item,
+          intensity: 0.1,
+          image1: imgs[1].getAttribute('src'),
+          image2: imgs[0].getAttribute('src'),
+          displacementImage: dispSrc,
+          speedIn: speed,
+          speedOut: speed,
+          imagesRatio: ratioHeight / ratioWidth
+        });
+      }
+      // console.log(ratioWidth + ' x ' + ratioHeight);
+    }
+
+    // if (isInstaFeed) console.log(item + " " + ratioHeight + " " + ratioWidth);
+    if (isTouchDevice) {
       imgs[1].style.display = 'block';
       let sibling = item.nextElementSibling;
       // console.log(sibling);
