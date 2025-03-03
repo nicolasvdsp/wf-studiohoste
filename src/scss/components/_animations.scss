@@ -28,7 +28,7 @@ $speedDelay: 0.1s;
 .word2 {
   display: inline-block;
   position: relative;
-  grid-area: 1 / 2 / 2 / 3;
+  grid-area: 1 / 2 / 1 / 2;
   text-align: start;
   // transition: transform linear $speed, opacity linear $speed;
   // opacity: 0;
@@ -36,8 +36,7 @@ $speedDelay: 0.1s;
 }
 
 .word1 {
-  text-align: end;
-  grid-area: 1 / 1 / 2 / 2;
+  grid-area: 1 / 1 / 1 / 1;
 }
 
 .reset-animation {
@@ -46,7 +45,7 @@ $speedDelay: 0.1s;
 
 .span-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: auto 1fr;
   grid-gap: 1.125rem;
 }
 
