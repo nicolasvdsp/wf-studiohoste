@@ -36,7 +36,7 @@ function revealElementOnScroll(element) {
 }
 
 //reveals text with a stagger effect when scrolling into viewport
-function revealTextElementsOnScoll(element) {
+function revealTextElementsOnScroll(element) {
   element.classList.remove("revealTextOnScroll");
   const revealWithDelay = element.classList.contains("revealWithDelay") ? true : false;
   const delay = revealWithDelay ? 1.6 : null;
@@ -86,7 +86,7 @@ function revealTextElementsOnScoll(element) {
 function allGsapAnimations() {
   let textElements = document.querySelectorAll(".revealTextOnScroll");
   if (textElements) textElements.forEach(el => {
-    revealTextElementsOnScoll(el);
+    revealTextElementsOnScroll(el);
   });
 
   let elements = document.querySelectorAll(".revealElementOnScroll");
