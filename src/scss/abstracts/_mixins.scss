@@ -27,3 +27,42 @@ $m-portrait: 479px;
     }
   }
 }
+
+@mixin breakpoint-between($max, $min: null) {
+
+  // Wanneer een min waarde is gegeven
+  @if $min {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+
+  // Als max groter is dan de tablet, gebruik dan de tablet als min
+  @else if $max >$tablet {
+    @media (min-width: $tablet) and (max-width: $max) {
+      @content;
+    }
+  }
+
+  // Als max groter is dan m-landscape, gebruik dan m-landscape als min
+  @else if $max >$m-landscape {
+    @media (min-width: $m-landscape) and (max-width: $max) {
+      @content;
+    }
+  }
+
+  // Als max groter is dan m-portrait, gebruik dan m-portrait als min
+  @else if $max >$m-portrait {
+    @media (min-width: $m-portrait) and (max-width: $max) {
+      @content;
+    }
+  }
+
+  // Als geen min is gegeven en geen van de bovengenoemde voorwaarden waar is,
+  // gebruik dan alleen max-width
+  @else {
+    @media (max-width: $max) {
+      @content;
+    }
+  }
+}
