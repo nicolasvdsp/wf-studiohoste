@@ -1,8 +1,8 @@
 function animateHeader() {
   const heading = document.querySelector(".heading-animation");
   if (!heading) return;
-  const firstWords = ["Verfijnd", "Esthetische"]
-  const secondWords = ["interieur", "architectuur"]
+  const firstWords = ["Esthetische", "Verfijnd"]
+  const secondWords = ["architectuur", "interieur"]
 
   const headingText = heading.textContent.trim();
   const words = headingText.split(' ');
